@@ -1,0 +1,53 @@
+Avaliação da Aula
+Título: SQL-DML
+
+Crie uma tabela para conta corrente (cc) bancária com:
+
+idt_cc
+num_agenciae
+num_cc
+dta_ult_atualizacao
+vlr_saldo_cc
+
+
+
+Insira 5 registros na tabela conta corrente.
+
+
+
+Mostre todas as contas correntes de uma determinada agência.
+
+
+
+Mostre todas as contas correntes que tiveram atualização no mês corrente.
+
+
+
+Adicione 1000 reais em uma das contas correntes.
+
+
+
+
+
+
+
+USE TAREFA;
+CREATE TABLE cc(
+idt_cc INT auto_increment primary key,
+num_agencia int,
+num_cc int,
+dta_ult_atualizacao date,
+vlr_saldo_cc DECIMAL(8,2)
+);
+INSERT INTO cc(num_agencia,num_cc,dta_ult_atualizacao,vlr_saldo_cc) VALUES
+(1,21,'2000-09-15',1400),
+(2,22,'2001-10-01',2000),
+(3,23,'2012-11-02',2500),
+(4,24,'2015-09-04',3000),
+(5,25,'2016-04-15',4000);
+
+SELECT  * FROM cc WHERE num_agencia=1;
+SELECT * FROM cc WHERE MONTH(dta_ult_atualizacao) = MONTH(current_date())  and YEAR(dta_ult_atualizacao) = YEAR(current_date());
+UPDATE cc  set vlr_saldo_cc = vlr_saldo_cc+1000 where idt_cc=1;
+
+
