@@ -1,0 +1,80 @@
+
+Criar um esquema/banco de dados: bd_aula_sql_basico (criar).
+
+
+-> CREATE DATABASE bd_aula_sql_basico;
+
+
+
+
+
+Abra (USE) o esquema bd_aula_sql_basico: (usar o esquema)
+
+-> USE bd_aula_sql_basico;
+
+
+
+
+
+Crie uma tabela produto com os campos: identificador do produto, nome do produto, valor e quantidade em estoque:
+
+Siga a nomenclatura: idt_prod (AUTO_INCREMENT), nme_prod, vlr_prod, qtd_prod
+
+Sugestão de tipos de dados:
+nome - varchar(50)
+valor - decimal(8,2)
+quantidade - int ////      
+
+CREATE TABLE tb_prod(
+	idt_prod INT AUTO_INCREMENT PRIMARY KEY,
+    nme_prod VARCHAR(40) NOT NULL,
+    vlr_prod DECIMAL(8,2),
+    qtd_prod INT
+);
+
+
+
+
+
+
+
+Insira (INSERT) pelo menos 3 registros (linhas) com dados quaisquer de teste. Deve ter algum produto com quantidade igual a 5 e outra com quantidade igual a 20.
+
+
+CREATE TABLE tb_prod(
+	idt_prod INT AUTO_INCREMENT PRIMARY KEY,
+    nme_prod VARCHAR(40) NOT NULL,
+    vlr_prod DECIMAL(8,2),
+    qtd_prod INT
+);
+
+
+
+
+
+Faça uma consulta (SELECT) que mostre o nome do produto, valor, quantidade e um campo calculado (Virtual), que seja o valor multiplicado pela quantidade (Total).
+
+
+SELECT nme_prod, vlr_prod, qtd_prod,
+	vlr_prod * qtd_prod AS Total
+        FROM tb_prod;
+
+
+
+Mostre (SELECT) um outro campo virtual com o texto: ‘Estoque Normal’, se a quantidade em estoque (qtd_prod) tiver pelo menos 10 (na quantidade), caso contrário mostre ‘Estoque Baixo’.
+
+
+SELECT nme_prod,(CASE WHEN qtd_prod <=10 THEN 'Estoque Normal' ELSE 'Estoque Baixo' END) AS Total
+		FROM tb_prod;
+
+
+
+
+Aumente (UPDATE) o valor de todos os produtos em 5%.
+
+UPDATE  tb_prod SET vlr_prod = vlr_prod+(vlr_prod*0.05) WHERE idt_prod >0;
+
+
+
+
+
