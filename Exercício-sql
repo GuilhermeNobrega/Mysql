@@ -1,0 +1,66 @@
+Avaliação da Aula
+Título: 02-Revisão DDL/DML SQL
+
+Crie uma tabela de Livro com os campos:
+Identificador
+ISBN
+Título
+Resumo
+Autor
+Número de Páginas
+
+
+
+Insira 5 livros.
+
+
+
+Faça as seguintes consultas:
+Busque um livro pelo ISBN
+Busque todos os livros de um determinado autor
+Traga todos os livros ordenados do maior número de páginas para o menor
+Busque todos os livros que tem resumo com mais de 30 caracteres.
+
+
+
+Altere todos os títulos de livro para ficarem com todas as letras maiúsculas.
+
+
+
+Exclua um determinado livro pelo identificador.
+
+
+
+CREATE DATABASE livro;
+USE livro;
+CREATE TABLE tb_livro(
+	idt_livro INT auto_increment primary key,
+    isbn_livro char(13) not null,
+    titulo_livro char(20) not null,
+    resumo_livro char(50) not null,
+    autor_livro varchar(15) not null,
+    qtd_paginas int not null);
+
+    
+INSERT into tb_livro(idt_livro,isbn_livro,titulo_livro,resumo_livro,autor_livro,qtd_paginas) values
+(‘31’,972,'baleia','uma baleia grande afunda um navio','Guilherme',240),
+(‘32’,973,'naviofantasma','Um grande navio desapacere em meio a guerra fria','Jhon',150),
+(‘33’,974,'as aventuras de arthur','Após um casamento, Arthur se perdeu de sua familia','Arthur',405),
+(‘34’,975,'Oppenheimer','Producao da primera bomba atomica','Robert',500),
+(‘35’,976,'ciencia e magia','Magia existe realmente?','Ryan',50);
+
+
+select * from tb_livro where isbn_livro = 972;
+select * from tb_livro where titulo_livro = 'Robert';
+select * from tb_livro order by qtd_livro asc;
+select * from tb_livro where length(resumo_livro) > 30;
+
+UPDATE tb_livro
+set titulo_livro = upper()
+
+delete from tb_livro where isbn_livro = '972';
+
+
+
+
+
